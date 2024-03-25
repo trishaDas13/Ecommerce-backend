@@ -43,7 +43,7 @@ const userLogin = async (req, res) => {
   const isPasswordValid = bcrypt.compareSync(req.body.password, user.password);
 
   //* expiry time calculation
-  const expiryDateTime = Math.floor(new Date().getTime() / 1000) + 3600; // 1 hour from now
+  const expiryDateTime = Math.floor(new Date().getTime() / 1000) + (3 * 3600); // 3 hour from now
 
   if (isPasswordValid) {
     const payload = {
@@ -55,7 +55,7 @@ const userLogin = async (req, res) => {
     const token = jwt.sign(payload, process.env.JWT_SECRET_KEY); //* generate token with JWT
 
     //* check if the user already present or not.
-    if (user.token !== null) {
+    if (user.token) {
       return res.status(401).json({
         success: false,
         message: "You are already logged in",

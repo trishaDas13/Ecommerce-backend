@@ -11,6 +11,7 @@ const authMiddleware = (role)=> async(req, res, next) => {
       process.env.JWT_SECRET_KEY
     );
     if (Date.now() >= payload.exp * 1000) {
+      // await userModal.findByIdAndUpdate(payload.id, { token: null })
         return res.status(401).json({
             success: false,
             message: "Your session has expired, please login first",
@@ -26,6 +27,7 @@ const authMiddleware = (role)=> async(req, res, next) => {
     }
     if(role.includes(payload.role)){
         // if(user.token === req.headers.authorization){
+          req.user = user;
             next(); 
         // }
        

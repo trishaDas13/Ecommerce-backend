@@ -1,0 +1,39 @@
+{
+  "firstname": "Trisha",
+  "lastname": "Das",
+  "email": "abc@gmail.com",
+  "password": "7890uiop",
+  "role": "admin"
+}
+-- cx --
+{
+  "firstname": "Ruma",
+  "lastname": "Das",
+  "email": "ruma11@gmail.com",
+  "password": "7890uiop",
+  "role": "buyer",
+}
+
+{
+  "title": "Almonds",
+  "description": "stay healthy with our almonds",
+  "price": 139.67,
+  "stock": 140,
+  "brand": "Happilo",
+  "category": "fruit"
+}
+
+All APIs:
+
+-- registration API -- 
+http://localhost:10000/api/v1/user/register
+
+-- log in API --
+http://localhost:10000/api/v1/user/login
+
+-- log out API --
+http://localhost:10000/api/v1/user/logout
+
+
+-- create and get product API --
+http://localhost:10000/api/v1/product
