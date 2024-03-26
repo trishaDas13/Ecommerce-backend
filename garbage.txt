@@ -13,6 +13,14 @@
   "password": "7890uiop",
   "role": "buyer",
 }
+-- seller --
+{
+  "firstname": "Mayank",
+  "lastname": "Gupta",
+  "email": "mgc@gmail.com",
+  "password": "7890uiop",
+  "role": "seller",
+}
 
 {
   "title": "Almonds",
@@ -37,3 +45,12 @@ http://localhost:10000/api/v1/user/logout
 
 -- create and get product API --
 http://localhost:10000/api/v1/product
+
+
+
+{
+  "productId" : "65eb274a9bec76eb39b3ab73",
+  "userId" : "66015c370dec50a490d27ab1"
+}
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2MDE1YzM3MGRlYzUwYTQ5MGQyN2FiMSIsIm5hbWUiOiJUcmlzaGEiLCJyb2xlIjoiYWRtaW4iLCJleHAiOjE3MTE0NjQwNTUsImlhdCI6MTcxMTQ1MzI1NX0.nRYQEybWSSyKfi8JIu22SrXiDJv4aCy9mo21wUGllbs

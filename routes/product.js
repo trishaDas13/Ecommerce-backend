@@ -27,6 +27,13 @@ router.get(
   productController.getProduct
 );
 
+//todo: review a product
+router.post(
+  "/:productId/review",
+  authMiddleware(["buyer", "admin"]),
+  productController.reviewProduct
+);
+
 //todo: like & dislike
 router.post(
   "/:action/:productId",
@@ -34,10 +41,11 @@ router.post(
   productController.likeDislikeProduct
 );
 
+//todo: get a specific product
 router.get(
   "/product_details",
+  authMiddleware(["admin", "buyer", "seller"]),
   productController.productDetails
-  
-)
+);
 
 module.exports = router;

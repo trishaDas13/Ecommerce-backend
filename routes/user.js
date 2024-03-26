@@ -9,4 +9,8 @@ router.post("/login",userController.userLogin)
 
 router.post("/logout", authMiddleware(["admin", "buyer", "seller"]), userController.userLogout)
 
+router.post("/add_to_wishlist", authMiddleware(["admin", "buyer"]), userController.addToWishlist)
+
+router.get("/get_the_wishlist", authMiddleware(["admin", "buyer"]), userController.getWishlist)
+
 module.exports = router

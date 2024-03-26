@@ -103,10 +103,37 @@ const userLogout = async (req, res) => {
   }
 };
 
+//todo: add product to user wishlist
+const addToWishlist = async(req, res) =>{
+  const updateObj = {
+    $push: {
+      wishlist: req.body.productId
+    }
+  }
+ await userModel.findByIdAndUpdate(req.user._id, updateObj)
+  res.json({
+    success: true,
+    message: "Product added to wishlist"
+  })
+}
+
+const getWishlist = async(req, res) =>{
+  const user = await  userModel.findById(req.user._id)
+  .select("wishlist")
+ 
+  res.json({
+    success: true,
+    message: "all the product from your wishlist",
+    wishlisted_item : user.wishlist
+  })
+}
+
 const controllers = {
   userRegistration,
   userLogin,
   userLogout,
+  addToWishlist,
+  getWishlist
 };
 
 module.exports = controllers;
