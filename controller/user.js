@@ -103,7 +103,7 @@ const userLogout = async (req, res) => {
   }
 };
 
-//todo: add product to user wishlist
+//todo: add product to user's wishlist
 const addToWishlist = async(req, res) =>{
   const updateObj = {
     $push: {
@@ -117,6 +117,7 @@ const addToWishlist = async(req, res) =>{
   })
 }
 
+//todo: get product from user's wishlist
 const getWishlist = async(req, res) =>{
   const user = await  userModel.findById(req.user._id)
   .select("wishlist")
@@ -128,12 +129,41 @@ const getWishlist = async(req, res) =>{
   })
 }
 
+const saveAddress = async(req, res) => { const address = req.body;
+  const setObject = {};
+
+  if (address.address) {
+    setObject["address.address"] = address.address;
+  }
+
+  if (address.city) {
+    setObject["address.city"] = address.city;
+  }
+
+  if (address.state) {
+    setObject["address.state"] = address.state;
+  }
+
+  if (address.pincode) {
+    setObject["address.pincode"] = address.pincode;
+  }
+  const updateObj = {
+    $set: setObject
+  }
+  await userModel.findByIdAndUpdate(req.user._id, updateObj)
+  res.json({
+    success: true,
+    message:  "Your adress has been updated"
+  })
+}
+
 const controllers = {
   userRegistration,
   userLogin,
   userLogout,
   addToWishlist,
-  getWishlist
+  getWishlist,
+  saveAddress
 };
 
 module.exports = controllers;

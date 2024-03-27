@@ -13,4 +13,6 @@ router.post("/add_to_wishlist", authMiddleware(["admin", "buyer"]), userControll
 
 router.get("/get_the_wishlist", authMiddleware(["admin", "buyer"]), userController.getWishlist)
 
+router.post("/address", authMiddleware(["admin", "buyer", "seller"]), userController.saveAddress)
+
 module.exports = router
