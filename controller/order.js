@@ -47,8 +47,26 @@ const createOrder = async(req, res) =>{
     if(req.body.modeOfPayment === "COD"){
 
     }else{
-        
+
     }
+    let deliveryAddress = req.body.deliveryAddress
+    if(!deliveryAddress){
+        deliveryAddress = req.user.address;
+    }
+
+    const deliveryDate = dayjs().add(7, "day");
+
+    await OrderModel.create({
+        cart : userCart,
+        userId : req.user._id,
+        amount: payableAmount,
+        coupon: coupon._id,
+        deliveryAddress,
+        orderPlacedAt : today,
+        deliveryDate,
+        orderStatus: 'Placed',
+        modeOfPayment: req.body.modeOfPayment,
+    })
 
     res.json({
         success: true,
