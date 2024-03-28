@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.post("/", authMiddleware(["admin"]), couponController.createCoupon);
 
-router.get("/all", couponController.getCoupon);
+router.get("/all", authMiddleware(["admin", "seller", "buyer"]), couponController.getCoupon);
 
 module.exports = router;

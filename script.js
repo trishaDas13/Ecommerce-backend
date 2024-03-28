@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const productRoutes = require('./routes/product');
 const couponRoutes = require('./routes/coupon');
-const cartRoute = require('./routes/cart')
+const cartRoute = require('./routes/cart');
+const orderRoute = require('./routes/order')
 
 dotenv.config();
 const app = express();
@@ -19,10 +20,11 @@ mongoose.connect(process.env.DATABASE_URL)
 })
 
 //todo: routes
-app.use("/api/v1/user",userRoutes)
-app.use("/api/v1/product",productRoutes)
-app.use("/api/v1/coupon",couponRoutes)
-app.use("/api/v1/cart", cartRoute)
+app.use("/api/v1/user",userRoutes);
+app.use("/api/v1/product",productRoutes);
+app.use("/api/v1/coupon",couponRoutes);
+app.use("/api/v1/cart", cartRoute);
+app.use("/api/v1/order", orderRoute)
 
 app.listen(process.env.PORT, () => {
     console.log(`server is up and running at ${process.env.PORT}`)
