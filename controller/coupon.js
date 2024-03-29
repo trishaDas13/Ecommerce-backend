@@ -6,7 +6,7 @@ const expireCoupons = async () => {
   try {
     // Find coupons with end date less than current date and update isActive to false
     const result = await CouponModel.updateMany({ endDate: { $lt: new Date() } }, { $set: { isActive: false } });
-    console.log("Expired coupons updated successfully:", result);
+    // console.log("Expired coupons updated successfully:", result);
   } catch (error) {
     console.error("Error expiring coupons:", error);
   }
