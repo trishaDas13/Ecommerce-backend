@@ -1,44 +1,64 @@
-E-Commerce Application Backend API Documentation
+# E-Commerce Application Backend API Documentation
 Welcome to the documentation for the E-Commerce Application Backend API. This document provides an overview of the available endpoints, their functionalities, and usage instructions.
 
-Table of Contents
-Introduction
-Getting Started
-Endpoints
-1. Authentication
-2. Products
-3. Orders
-4. Users
-Error Handling
-Rate Limiting
-Authentication
-Contributing
-Contact
-Introduction
+### Introduction
 This API serves as the backend for our E-Commerce Application, providing various endpoints to manage products, orders, users, and authentication.
 
-Getting Started
-To use this API, you'll need an API key which can be obtained by registering on our platform. Once you have the API key, you can start making requests to the available endpoints.
+`Base URL`: https://ecommerce-backend-k6ms.onrender.com/api/v1
 
-Base URL: https://api.example.com
+## Endpoints
+`Authentication`
 
-Endpoints
-1. Authentication
-POST /auth/login: Log in with username and password to obtain an access token.
-POST /auth/register: Register a new user account.
-2. Products
-GET /products: Retrieve a list of all products.
-GET /products/{id}: Retrieve details of a specific product by ID.
-POST /products: Add a new product.
-PUT /products/{id}: Update an existing product by ID.
-DELETE /products/{id}: Delete a product by ID.
-3. Orders
+POST /user/login: Log in with a username and password to obtain an access token.
+
+POST /user/register: Register a new user account.
+
+POST /user/logout: Register a new user account.
+
+
+`Address Update`
+
+POST /user/address: Update the address of the user.
+
+`wishlist`
+
+POST /user/add_to_wishlist: Users can add products to their wishlist.
+
+GET /user/get_the_wishlist: The list of the whole wishlist.
+
+`Products`
+
+POST /product: Create a new product.
+
+PATCH /product: Update a product.
+
+GET /product: Retrieve details of products.
+
+DELETE /product: Delete a product by ID.
+
+POST /product/like/{product_id}: to like a product.
+
+POST /product/dislike/{product_id}: to dislike a product.
+
+GET /product/product_details?productId={product_id}: get details for a particular product.
+
+`Coupon`
+
+POST /coupon: post a coupon with a discount.
+
+GET /coupon/all: get the list of the coupon.
+
+`Cart`
+
+POST /cart: post a 
+
+5. Orders
 GET /orders: Retrieve a list of all orders.
 GET /orders/{id}: Retrieve details of a specific order by ID.
 POST /orders: Place a new order.
 PUT /orders/{id}: Update status of an existing order by ID.
 DELETE /orders/{id}: Cancel an order by ID.
-4. Users
+6. Users
 GET /users/{id}: Retrieve user details by ID.
 PUT /users/{id}: Update user details by ID.
 DELETE /users/{id}: Delete user account by ID.
